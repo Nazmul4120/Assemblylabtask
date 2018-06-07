@@ -1,0 +1,46 @@
+
+
+include emu8086.inc
+org 100h
+
+MOV AH,1
+INT 21h
+MOV BL,AL
+
+CMP BL,60h
+JGE CAP
+JL SML
+
+SML:
+MOV AH,2
+
+MOV DL,0Ah
+INT 21h
+MOV DL,0Dh
+INT 21h
+
+ADD BL,20h
+MOV DL,BL
+INT 21h
+
+ret
+
+CAP:
+MOV AH,2
+
+MOV DL,0Ah
+INT 21h
+MOV DL,0Dh
+INT 21h
+
+SUB BL,20h
+MOV DL,BL
+INT 21h
+
+ret
+
+
+
+
+
+
